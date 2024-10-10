@@ -1,10 +1,13 @@
-# Ex 02 Django ORM Web Application
-
-
-## DATE: 28-09-24
+# Ex02 Django ORM Web Application
+## Date: 
 
 ## AIM
-To develop a Django application to store and retrieve data from a Football Players database using Object Relational Mapping(ORM).
+To develop a Django application to store and retrieve data from a bank loan database using Object Relational Mapping(ORM).
+
+## ENTITY RELATIONSHIP DIAGRAM
+
+![diagram](https://github.com/user-attachments/assets/44944f0e-a650-4bce-ba43-2887ce7de402)
+
 
 ## DESIGN STEPS
 
@@ -18,49 +21,42 @@ Create a new app in Django project
 Enter the code for admin.py and models.py
 
 ### STEP 4:
-Execute Django admin and create 10 Football players
+Execute Django admin and create details for 10 books
 
 ## PROGRAM
 
 ```
+admin.py
 
+from django.contrib import admin
 
-
-py
-Models.py
+# Register your models here.
+from .models import bankloan,bankloanAdmin
+admin.site.register(bankloan,bankloanAdmin)
+```
+```
+models.py
 
 from django.db import models
+
+# Create your models here.
 from django.contrib import admin
-class Players(models.Model):
-    jrsy=models.CharField(max_length=20,help_text="Player Jrsy")
-    name=models.CharField(max_length=100)
-    cntry=models.CharField(max_length=100)
-    age=models.IntegerField()
-    height=models.IntegerField()
+class bankloan(models.Model):
+    accno=models.IntegerField(primary_key=True);
+    name=models.CharField(max_length=100);
+    loanamt=models.IntegerField();
+    loanlimit=models.IntegerField();
+    phoneno=models.IntegerField();
 
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('jrsy','name','cntry','age','height')
-
-
-Admin.py
-
-from django.contrib import admin
-from .models import Players,EmployeeAdmin
-admin.site.register(Players,EmployeeAdmin)
-
-
-
-
-
-
+class bankloanAdmin(admin.ModelAdmin):
+    list_display=('accno','name','loanamt','loanlimit','phoneno')
 ```
 
 
-
-
-
 ## OUTPUT
-![image](https://github.com/rahulramakrishnann/Exp-2-ORM--web/assets/143045415/b2e404af-f088-492e-b606-6ebffece8f02)
-![image](https://github.com/rahulramakrishnann/Exp-2-ORM--web/assets/143045415/94c3d887-112e-4b9b-b83a-7365148fb61f)
+
+![Screenshot 2024-10-06 193157](https://github.com/user-attachments/assets/1cba6be3-0e23-498f-9d63-e3b4bfde70b7)
+
+
 ## RESULT
-Thus the program for creating a database using ORM hass been executed successfully
+Thus the program for creating a database using ORM hass been executed successfully.
